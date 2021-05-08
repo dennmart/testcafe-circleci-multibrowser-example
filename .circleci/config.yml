@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@4.3.0
   browser-tools: circleci/browser-tools@1.1.3
+  windows: circleci/windows@2.4.0
 
 jobs:
   chrome:
@@ -26,8 +27,19 @@ jobs:
           name: Run TestCafe tests on headless Firefox
           command: npm run test:firefox:headless
 
+  edge:
+    executor:
+      name: windows/default
+
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          command: npm run test:edge:headless
+
 workflows:
   end-to-end-tests:
     jobs:
       - chrome
       - firefox
+      - edge
