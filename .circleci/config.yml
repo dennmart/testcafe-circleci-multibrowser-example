@@ -51,5 +51,9 @@ workflows:
   end-to-end-tests:
     jobs:
       - chrome
-      - firefox
-      - edge
+      - firefox:
+          requires:
+            - chrome
+      - edge:
+          requires:
+            - firefox
