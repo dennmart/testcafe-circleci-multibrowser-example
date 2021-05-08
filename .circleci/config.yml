@@ -7,15 +7,27 @@ jobs:
   chrome:
     docker:
       - image: cimg/node:12.22-browsers
-
     steps:
       - checkout
       - browser-tools/install-browser-tools
       - node/install-packages
       - run:
+          name: Run TestCafe tests on headless Chrome
           command: npm run test:chrome:headless
+
+  firefox:
+    docker:
+      - image: cimg/node:12.22-browsers
+    steps:
+      - checkout
+      - browser-tools/install-browser-tools
+      - node/install-packages
+      - run:
+          name: Run TestCafe tests on headless Firefox
+          command: npm run test:firefox:headless
 
 workflows:
   end-to-end-tests:
     jobs:
       - chrome
+      - firefox
