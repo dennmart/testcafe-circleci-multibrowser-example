@@ -45,7 +45,7 @@ jobs:
             - node_modules
       - run:
           name: Run TestCafe tests on headless Microsoft Edge
-          command: npm run test:edge:headless
+          command: npm run test:edge
 
 workflows:
   end-to-end-tests:

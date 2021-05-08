@@ -5,7 +5,7 @@
   "scripts": {
     "test:chrome:headless": "testcafe chrome:headless *.js",
     "test:firefox:headless": "testcafe firefox:headless *.js",
-    "test:edge:headless": "testcafe edge:headless *.js"
+    "test:edge": "testcafe edge *.js"
   },
   "repository": {
     "type": "git",
