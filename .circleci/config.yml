@@ -28,24 +28,22 @@ jobs:
           command: npm run test:firefox:headless
 
   edge:
-    executor:
-      name: windows/default
-
+    docker:
+      - image: cimg/node:12.22-browsers
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - testcafe-deps-{{ checksum "package-lock.json" }}
+      - node/install-packages
       - run:
-          name: Installing NPM packages
-          command: npm ci
-      - save_cache:
-          key: testcafe-deps-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
+          name: Set up Microsoft Edge
+          command: |
+              curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+              sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+              sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+              sudo apt update
+              sudo apt install microsoft-edge-beta
       - run:
-          name: Run TestCafe tests on headless Microsoft Edge
-          command: npm run test:edge
+          name: Run TestCafe tests on Microsoft Edge
+          command: npm run test:edge:headless
 
 workflows:
   end-to-end-tests:
