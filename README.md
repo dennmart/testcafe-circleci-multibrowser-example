@@ -1,6 +1,12 @@
-# Multi-browser testing with TestCafe and CircleCI
+# Cross Browser Testing With TestCafe and CircleCI
+
+<p align="center">
+  <img src="https://dev-tester.com/content/images/2021/05/twitter_cover_cross_browser_testcafe_circleci.png" alt="Cross Browser Testing With TestCafe and CircleCI" />
+</p>
 
 This repo contains an example for running end-to-end tests on multiple browsers using [TestCafe](https://testcafe.io/) and [CircleCI](https://circleci.com/).
+
+Read the article **Cross Browser Testing With TestCafe and CircleCI** on the Dev Tester blog: https://dev-tester.com/cross-browser-testing-with-testcafe-and-circleci/
 
 ## End-to-End Testing with TestCafe
 
